@@ -1,8 +1,5 @@
 # Algorithm Explination: https://www.geeksforgeeks.org/counting-sort
 
-from itertools import count
-
-
 def countingSort(size, array):
 
     # Create the dictionary
@@ -23,4 +20,4 @@ def countingSort(size, array):
     for i in range(len(array)):
         output[count[array[i]] - 1] = array[i]
         count[array[i]] -= 1
-        yield output
+        yield output, count[array[i]] - 1
