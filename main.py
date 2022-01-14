@@ -9,11 +9,13 @@ import time
 import countingSort
 import bubbleSort
 import bogoSort
+import quickSort
 
 
 print("bogo     - Bogo Sort.")
-print("bubble   - bubble Sort.")
-print("counting - counting Sort.")
+print("bubble   - Bubble Sort.")
+print("counting - Counting Sort.")
+print("quick    - Quick Sort")
 sort_algo = input("What Sorting Algorithm do you want: ")
 fps = int(input("What do you want the FPS (Frames Per Second) to be: "))
 array_len = int(input("How many items do you want in the array (DO NOT GO OVER 1000): "))
@@ -46,6 +48,7 @@ def restart():
     if   sort_algo == "bogo": sort_gen = bogoSort.bogoSort(array)
     elif sort_algo == "bubble": sort_gen = bubbleSort.bubbleSort(array)
     elif sort_algo == "counting": sort_gen = countingSort.countingSort(max(array) + 1, array)
+    elif sort_algo == "quick": sort_gen = quickSort.quickSort(array, 0, len(array) - 1)
 
     global operated
     operated = 0
@@ -55,6 +58,8 @@ def restart():
     green_index = -1
     global changed
     changed = -2
+    global other_changed
+    other_changed = -2
 restart()
 
 
@@ -74,7 +79,7 @@ while True:
     text_surface = myfont.render("FPS: " + str(int(clock.get_fps())), False, white)
     screen.blit(text_surface, (0, 0))
 
-    if output != sorted(array): output, changed = next(sort_gen)
+    if output != sorted(array): output, changed, other_changed = next(sort_gen)
     else: is_sorted, green_index, changed = True, green_index + 100 * dt, -1 
 
     if green_index > len(output): green_index = len(output)
@@ -85,8 +90,8 @@ while True:
         x = width / len(output) * i
         y = height - h
         color = white if i > green_index else green
-
-        if i - 1 == changed: color = red
+        if i == changed: color = red
+        if i == other_changed: color = green
 
         pygame.draw.rect(screen, color, pygame.Rect(x, y, w, h))
     
