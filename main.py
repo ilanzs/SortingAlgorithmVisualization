@@ -11,8 +11,8 @@ import bubbleSort
 import bogoSort
 import quickSort
 
-fps = 30
-array_len = 100
+fps = 100
+array_len = 1000
 
 clock = pygame.time.Clock()
 
@@ -76,6 +76,8 @@ class Button():
         pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(pos):
             if pygame.mouse.get_pressed()[0]:
+                global current_alg
+                current_alg = self.alg
                 restart(self.alg)
 
         screen.blit(self.image, (self.rect.x, self.rect.y))
@@ -97,15 +99,15 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                array_len += 1
+            if event.key == pygame.K_UP and array_len <= width:
+                array_len += 100
                 restart(current_alg)
-            elif event.key == pygame.K_DOWN:
-                array_len -= 1
+            elif event.key == pygame.K_DOWN and array_len > 100:
+                array_len -= 100
                 restart(current_alg)
             elif event.key == pygame.K_RIGHT:
                 fps += 1
-            elif event.key == pygame.K_LEFT:
+            elif event.key == pygame.K_LEFT and fps > 1:
                 fps -= 1
                 
 
@@ -142,6 +144,8 @@ while True:
 
     current_array_len = myfont.render("Number of elements: " + str(array_len), False, white)
     screen.blit(current_array_len, (0, 40))
+    current_alg_text = myfont.render("Current Algorithm: " + current_alg.capitalize(), False, white)
+    screen.blit(current_alg_text, (0, 80))
 
     for button in buttons:
         button.draw()
