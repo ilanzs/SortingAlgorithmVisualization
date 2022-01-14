@@ -1,11 +1,8 @@
-import random
-from random import randint
-
 def quickSort(array, left, right):
     if left >= right:
         return
     index = left
-    random_index = randint(left, right)
+    random_index = right
     array[right], array[random_index] = array[random_index], array[right]
     
     for j in range(left, right):
