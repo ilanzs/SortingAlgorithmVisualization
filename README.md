@@ -47,6 +47,15 @@ n is number of elements in the array.
 
 Comb Sort is an imporvement on Bubble Sort.\
 Speed: O(n² / 2<sup>p</sup>)
+n is number of elements in the array.
+p is number of increments.
+
+### [Shell Sort](https://en.wikipedia.org/wiki/Comb_sort)
+
+Shell Sort is an in place compirason sort.
+Speed: Worst:  O(n²)
+       Best:   O(n log n)
+n is number of elements in the aray.
 
 ### [Bogo Sort](https://www.geeksforgeeks.org/bogosort-permutation-sort)
 
