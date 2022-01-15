@@ -11,11 +11,12 @@ import bubbleSort
 import bogoSort
 import quickSort
 import mergeSort
+import combSort
 
 if len(sys.argv) < 2:
     raise NameError("Usage: python main.py <sorting algorithm>")
 
-implemented_algs = ["quick", "counting", "bubble", "bogo", "merge"]
+implemented_algs = ["quick", "counting", "bubble", "bogo", "merge", "comb"]
 if sys.argv[1] not in implemented_algs:
     raise NameError(f"Algorithm Error: {sys.argv[1]} not in implemented algorithms.")
 
@@ -54,6 +55,7 @@ def restart(sort_algo):
     elif sort_algo == "counting": sort_gen = countingSort.countingSort(max(array) + 1, array)
     elif sort_algo == "quick": sort_gen = quickSort.quickSort(array, 0, len(array) - 1)
     elif sort_algo == "merge": sort_gen = mergeSort.mergeSort(array, 0, len(array) - 1)
+    elif sort_algo == "comb": sort_gen = combSort.combSort(array)
 
     global operated
     operated = 0
