@@ -12,11 +12,12 @@ import bogoSort
 import quickSort
 import mergeSort
 import combSort
+import shellSort
 
 if len(sys.argv) < 2:
     raise NameError("Usage: python main.py <sorting algorithm>")
 
-implemented_algs = ["quick", "counting", "bubble", "bogo", "merge", "comb"]
+implemented_algs = ["quick", "counting", "bubble", "bogo", "merge", "comb", "shell"]
 if sys.argv[1] not in implemented_algs:
     raise NameError(f"Algorithm Error: {sys.argv[1]} not in implemented algorithms.")
 
@@ -48,6 +49,10 @@ def restart(sort_algo):
     random.shuffle(array)
     global output
     output = array.copy()
+    global comparisons
+    comparisons = 0
+    global swaps
+    swaps = 0
 
     global sort_gen
     if   sort_algo == "bogo": sort_gen = bogoSort.bogoSort(array)
@@ -56,6 +61,7 @@ def restart(sort_algo):
     elif sort_algo == "quick": sort_gen = quickSort.quickSort(array, 0, len(array) - 1)
     elif sort_algo == "merge": sort_gen = mergeSort.mergeSort(array, 0, len(array) - 1)
     elif sort_algo == "comb": sort_gen = combSort.combSort(array)
+    elif sort_algo == "shell": sort_gen = shellSort.shellSort(array)
 
     global operated
     operated = 0
@@ -92,14 +98,21 @@ while True:
 
     screen.fill(black)
     if output == sorted(array): is_sorted = True
+    prev_comparisons = comparisons
+    prev_swaps = swaps
     try:
-        if not is_sorted: output, changed, other_changed = next(sort_gen)
+        if not is_sorted:
+            output, changed, other_changed, comparisons, swaps = next(sort_gen)
+            comparisons = comparisons + prev_comparisons
+            swaps = swaps + prev_swaps
         else: is_sorted, green_index, changed = True, green_index + 100 * dt, -1 
     except:
         is_sorted = True
 
-    fps_surface = myfont.render("FPS: " + str(int(clock.get_fps())), False, white)
+    fps_surface = myfont.render("COMPARISONS: " + str(comparisons), False, white)
     screen.blit(fps_surface, (0, 0))
+    fps_surface = myfont.render("SWAPS: " + str(swaps), False, white)
+    screen.blit(fps_surface, (0, 40))
 
 
 
@@ -117,11 +130,6 @@ while True:
 
 
         pygame.draw.rect(screen, color, pygame.Rect(x, y, w, h))
-
-    current_array_len = myfont.render("Number of elements: " + str(array_len), False, white)
-    screen.blit(current_array_len, (0, 40))
-    current_alg_text = myfont.render("Current Algorithm: " + current_alg.capitalize(), False, white)
-    screen.blit(current_alg_text, (0, 80))
 
     clock.tick(fps)
   

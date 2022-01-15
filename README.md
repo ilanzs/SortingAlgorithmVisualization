@@ -13,8 +13,8 @@ A place for me to learn about sorting algorithms.
 
 To increase the number of elements in the array press the <kbd>↑</kbd>.\
 To decrease the number of elements in the array press the <kbd>↓</kbd>.\
-To increase the Frame Rate press the <kbd>→</kbd>.\
-to decrease the FrameRate press the <kbd>←</kbd>.
+To increase the sorting speed press the <kbd>→</kbd>.\
+to decrease the sorting speed press the <kbd>←</kbd>.
 
 ## Implemented sorting algorithms
 

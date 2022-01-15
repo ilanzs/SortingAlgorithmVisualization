@@ -20,4 +20,5 @@ def countingSort(size, array):
     for i in range(len(array)):
         output[count[array[i]] - 1] = array[i]
         count[array[i]] -= 1
-        yield output, count[array[i]] - 1, -2
+        yield output, count[array[i]] - 1, -2, 0, 0
+        

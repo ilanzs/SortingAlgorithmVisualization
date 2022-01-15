@@ -5,5 +5,5 @@ import random
 def bogoSort(array):
     while True:
         random.shuffle(array)
-        yield array, -2, -2
+        yield array, -2, -2, 0, 0
 
