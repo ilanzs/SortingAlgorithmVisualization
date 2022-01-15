@@ -34,11 +34,17 @@ n is number of elements in the array.
 ### [Quick Sort](https://www.geeksforgeeks.org/quick-sort/)
 
 Quick Sort is a divide and conquer sorting algorithm.\
-Speed: O(log n)\
+Speed: O(n²)\
+n is number of elements in the array.
+
+### [Merge Sort](https://www.geeksforgeeks.org/merge-sort/)
+
+Merge Sort is a divide and conquer sorting algorithm.\
+Speed: O(n log n)\
 n is number of elements in the array.
 
 ### [Bogo Sort](https://www.geeksforgeeks.org/bogosort-permutation-sort)
 
 Bogo Sort is made as a joke. It works by shuffling the list until it is sorted.\
-Speed: O((n-1)* n!)\
+Speed: O(∞)\
 n is number of elements in the array.

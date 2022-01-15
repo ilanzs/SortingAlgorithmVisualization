@@ -10,11 +10,12 @@ import countingSort
 import bubbleSort
 import bogoSort
 import quickSort
+import mergeSort
 
 if len(sys.argv) < 2:
     raise NameError("Usage: python main.py <sorting algorithm>")
 
-implemented_algs = ["quick", "counting", "bubble", "bogo"]
+implemented_algs = ["quick", "counting", "bubble", "bogo", "merge"]
 if sys.argv[1] not in implemented_algs:
     raise NameError(f"Algorithm Error: {sys.argv[1]} not in implemented algorithms.")
 
@@ -52,6 +53,7 @@ def restart(sort_algo):
     elif sort_algo == "bubble": sort_gen = bubbleSort.bubbleSort(array)
     elif sort_algo == "counting": sort_gen = countingSort.countingSort(max(array) + 1, array)
     elif sort_algo == "quick": sort_gen = quickSort.quickSort(array, 0, len(array) - 1)
+    elif sort_algo == "merge": sort_gen = mergeSort.mergeSort(array, 0, len(array) - 1)
 
     global operated
     operated = 0
@@ -70,16 +72,16 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP and array_len <= width:
-                array_len += 5
+            if event.key == pygame.K_UP and array_len < width:
+                array_len += 100
                 restart(current_alg)
-            elif event.key == pygame.K_DOWN and array_len > 5:
-                array_len -= 5
+            elif event.key == pygame.K_DOWN and array_len > 100:
+                array_len -= 100
                 restart(current_alg)
             elif event.key == pygame.K_RIGHT:
-                fps += 1
-            elif event.key == pygame.K_LEFT and fps > 1:
-                fps -= 1
+                fps += 10
+            elif event.key == pygame.K_LEFT and fps > 10:
+                fps -= 10
                 
 
     now = time.time()
@@ -107,9 +109,10 @@ while True:
         h = height / max(array) * num
         x = width / len(output) * i
         y = height - h
-        color = white if i > green_index else green
-        if i == changed: color = red
-        if i == other_changed: color = green
+        if i == changed and not is_sorted: color = red
+        elif (i == other_changed and not is_sorted) or i <= green_index: color = green
+        else: color = white
+
 
         pygame.draw.rect(screen, color, pygame.Rect(x, y, w, h))
 
