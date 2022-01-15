@@ -14,11 +14,12 @@ import algorithms.mergeSort as mergeSort
 import algorithms.combSort as combSort
 import algorithms.shellSort as shellSort
 import algorithms.stoogeSort as stoogeSort
+import algorithms.selectionSort as selectionSort
 
 if len(sys.argv) < 2:
     raise NameError("Usage: python main.py <sorting algorithm>")
 
-implemented_algs = ["quick", "counting", "bubble", "bogo", "merge", "comb", "shell", "stooge"]
+implemented_algs = ["quick", "counting", "bubble", "bogo", "merge", "comb", "shell", "stooge", "selection"]
 if sys.argv[1] not in implemented_algs:
     raise NameError(f"Algorithm Error: {sys.argv[1]} not in implemented algorithms.")
 
@@ -64,7 +65,7 @@ def restart(sort_algo):
     elif sort_algo == "comb": sort_gen = combSort.combSort(array)
     elif sort_algo == "shell": sort_gen = shellSort.shellSort(array)
     elif sort_algo == "stooge": sort_gen = stoogeSort.stoogeSort(array)
-
+    elif sort_algo == "selection": sort_gen = selectionSort.selectionSort(array)
 
     global operated
     operated = 0

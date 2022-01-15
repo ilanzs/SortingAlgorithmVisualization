@@ -55,12 +55,18 @@ p is number of increments.
 Shell Sort is an in place compirason sort.
 Speed: Worst:  O(n²)
        Best:   O(n log n)
-n is number of elements in the aray.
+n is number of elements in the array.
+
+### [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
+Selection Sort is an in place comparison sorting algorithms.
+Speed: O(n²)
+n is number of elements in the array
 
 ### [Stooge Sort](https://en.wikipedia.org/wiki/Stooge_sort)
 
 Stooge Sort is very slow recusrive sorting algorithm.
 Speed: O(n<sup>2.709</sup>)
+n is number of elements in the array
 
 ### [Bogo Sort](https://www.geeksforgeeks.org/bogosort-permutation-sort)
 
