@@ -7,11 +7,10 @@ A place for me to learn about sorting algorithms.
 1. Install python on your machine.
 2. Install pygame by running this command: ```pip install pygame```.
 3. Navigate to the folder at which ```main.py``` is located.
-4. In your terminal run ```python main.py```
+4. In your terminal run ```python main.py <sortingAlgorithm>```
 
 ## How to navigate the GUI
 
-On the bottom of the screen there are buttons with different sorting algorithms. Press on one and it will randomize the array and start sorting it.\
 To increase the number of elements in the array press the <kbd>↑</kbd>.\
 To decrease the number of elements in the array press the <kbd>↓</kbd>.\
 To increase the Frame Rate press the <kbd>→</kbd>.\

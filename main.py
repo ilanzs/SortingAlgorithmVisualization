@@ -11,6 +11,13 @@ import bubbleSort
 import bogoSort
 import quickSort
 
+if len(sys.argv) < 2:
+    raise NameError("Usage: python main.py <sorting algorithm>")
+
+implemented_algs = ["quick", "counting", "bubble", "bogo"]
+if sys.argv[1] not in implemented_algs:
+    raise NameError(f"Algorithm Error: {sys.argv[1]} not in implemented algorithms.")
+
 fps = 100
 array_len = 1000
 
@@ -20,9 +27,7 @@ pygame.init()
 pygame.font.init() 
 myfont = pygame.font.SysFont('Calibri', 30)
 
-bar_len = 30
-
-size = width, height = 1000, 500 + bar_len
+size = width, height = 1000, 500
 black = 0, 0, 0
 white = 255, 255, 255
 green = 0, 255, 0
@@ -31,11 +36,7 @@ purple = 255, 0, 255
 
 screen = pygame.display.set_mode(size)
 
-bogo_image = pygame.image.load("images/Bogo.jpg").convert_alpha()
-quick_image = pygame.image.load("images/quick.jpg").convert_alpha()
-bubble_image = pygame.image.load("images/Bubble.jpg").convert_alpha()
-count_image = pygame.image.load("images/Count.jpg").convert_alpha()
-
+current_alg = sys.argv[1]
 
 prev_time = time.time()
 
@@ -63,47 +64,17 @@ def restart(sort_algo):
     global other_changed
     other_changed = -2
 
-restart("quick")
-
-class Button():
-    def __init__(self, x, y, image, alg):
-        self.image = image
-        self.rect = self.image.get_rect()
-        self.rect.topleft = (x, y)
-        self.alg = alg
-
-    def draw(self):
-        pos = pygame.mouse.get_pos()
-        if self.rect.collidepoint(pos):
-            if pygame.mouse.get_pressed()[0]:
-                global current_alg
-                current_alg = self.alg
-                restart(self.alg)
-
-        screen.blit(self.image, (self.rect.x, self.rect.y))
-
-    
-
-quick_button  = Button(10, height - bar_len, quick_image, "quick")
-count_button  = Button(120, height - bar_len, count_image, "counting")
-bogo_button   = Button(340, height - bar_len, bogo_image, "bogo")
-bubble_button = Button(230, height - bar_len, bubble_image, "bubble")
-
-120, height - bar_len
-
-buttons = [quick_button, count_button, bubble_button, bogo_button]
-
-current_alg = "quick"
+restart(current_alg)
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP and array_len <= width:
-                array_len += 100
+                array_len += 5
                 restart(current_alg)
-            elif event.key == pygame.K_DOWN and array_len > 100:
-                array_len -= 100
+            elif event.key == pygame.K_DOWN and array_len > 5:
+                array_len -= 5
                 restart(current_alg)
             elif event.key == pygame.K_RIGHT:
                 fps += 1
@@ -133,9 +104,9 @@ while True:
 
     for i, num in enumerate(output):
         w = width / len(output)
-        h = (height - bar_len) / max(array) * num
+        h = height / max(array) * num
         x = width / len(output) * i
-        y = height - h - bar_len
+        y = height - h
         color = white if i > green_index else green
         if i == changed: color = red
         if i == other_changed: color = green
@@ -146,9 +117,6 @@ while True:
     screen.blit(current_array_len, (0, 40))
     current_alg_text = myfont.render("Current Algorithm: " + current_alg.capitalize(), False, white)
     screen.blit(current_alg_text, (0, 80))
-
-    for button in buttons:
-        button.draw()
 
     clock.tick(fps)
   
