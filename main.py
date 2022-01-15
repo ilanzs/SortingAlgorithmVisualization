@@ -6,14 +6,14 @@ import sys
 import random
 import time
 
-import countingSort
-import bubbleSort
-import bogoSort
-import quickSort
-import mergeSort
-import combSort
-import shellSort
-import stoogeSort
+import algorithms.countingSort as countingSort
+import algorithms.bubbleSort as bubbleSort
+import algorithms.bogoSort as bogoSort
+import algorithms.quickSort as quickSort
+import algorithms.mergeSort as mergeSort
+import algorithms.combSort as combSort
+import algorithms.shellSort as shellSort
+import algorithms.stoogeSort as stoogeSort
 
 if len(sys.argv) < 2:
     raise NameError("Usage: python main.py <sorting algorithm>")
