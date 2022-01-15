@@ -57,6 +57,11 @@ Speed: Worst:  O(n²)
        Best:   O(n log n)
 n is number of elements in the aray.
 
+### [Stooge Sort](https://en.wikipedia.org/wiki/Stooge_sort)
+
+Stooge Sort is very slow recusrive sorting algorithm.
+Speed: O(n<sup>2.709</sup>)
+
 ### [Bogo Sort](https://www.geeksforgeeks.org/bogosort-permutation-sort)
 
 Bogo Sort is made as a joke. It works by shuffling the list until it is sorted.\
