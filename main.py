@@ -16,11 +16,12 @@ import algorithms.shellSort as shellSort
 import algorithms.stoogeSort as stoogeSort
 import algorithms.selectionSort as selectionSort
 import algorithms.gnomeSort as gnomeSort
+import algorithms.cocktailSort as cocktailSort
 
 if len(sys.argv) < 2:
     raise NameError("Usage: python main.py <sorting algorithm>")
 
-implemented_algs = ["quick", "counting", "bubble", "bogo", "merge", "comb", "shell", "stooge", "selection", "gnome"]
+implemented_algs = ["quick", "counting", "bubble", "bogo", "merge", "comb", "shell", "stooge", "selection", "gnome", "cocktail"]
 if sys.argv[1] not in implemented_algs:
     raise NameError(f"Algorithm Error: {sys.argv[1]} not in implemented algorithms.")
 
@@ -68,6 +69,8 @@ def restart(sort_algo):
     elif sort_algo == "stooge": sort_gen = stoogeSort.stoogeSort(array)
     elif sort_algo == "selection": sort_gen = selectionSort.selectionSort(array)
     elif sort_algo == "gnome": sort_gen = gnomeSort.gnomeSort(array)
+    elif sort_algo == "cocktail": sort_gen = cocktailSort.cocktailSort(array)
+
 
 
 
@@ -108,14 +111,14 @@ while True:
     if output == sorted(array): is_sorted = True
     prev_comparisons = comparisons
     prev_swaps = swaps
-    try:
-        if not is_sorted:
-            output, changed, other_changed, comparisons, swaps = next(sort_gen)
-            comparisons = comparisons + prev_comparisons
-            swaps = swaps + prev_swaps
-        else: is_sorted, green_index, changed = True, green_index + 100 * dt, -1 
-    except:
-        is_sorted = True
+    # try:
+    if not is_sorted:
+        output, changed, other_changed, comparisons, swaps = next(sort_gen)
+        comparisons = comparisons + prev_comparisons
+        swaps = swaps + prev_swaps
+    else: is_sorted, green_index, changed = True, green_index + 100 * dt, -1 
+    # except:
+    #     is_sorted = True
 
     fps_surface = myfont.render("COMPARISONS: " + str(comparisons), False, white)
     screen.blit(fps_surface, (0, 0))

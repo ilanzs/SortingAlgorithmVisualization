@@ -46,27 +46,33 @@ n is number of elements in the array.
 ### [Comb Sort](https://en.wikipedia.org/wiki/Comb_sort)
 
 Comb Sort is an imporvement on Bubble Sort.\
-Speed: O(n² / 2<sup>p</sup>)
-n is number of elements in the array.
+Speed: O(n² / 2<sup>p</sup>)\
+n is number of elements in the array.\
 p is number of increments.
 
 ### [Shell Sort](https://en.wikipedia.org/wiki/Comb_sort)
 
-Shell Sort is an in place compirason sort.
-Speed: Worst:  O(n²)
-       Best:   O(n log n)
+Shell Sort is an in place compirason sort.\
+Speed: Worst:  O(n²)\
+       Best:   O(n log n)\
 n is number of elements in the array.
 
 ### [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
 
-Selection Sort is an in place comparison sorting algorithms.
-Speed: O(n²)
+Selection Sort is an in place comparison sorting algorithms.\
+Speed: O(n²)\
+n is number of elements in the array
+
+### [Cocktail Sort](https://www.geeksforgeeks.org/cocktail-sort/)
+
+Cocktail Sort is a variation of Bubble sort.\
+Speed: O(n²)\
 n is number of elements in the array
 
 ### [Gnome Sort](https://en.wikipedia.org/wiki/Gnome_sort)
 
-Gnome Sort (dubbed stupid sort) is a sorting algorithm originally proposed by Iranian computer scientist Hamid Sarbazi-Azad.
-Speed: O(n²)
+Gnome Sort (dubbed stupid sort) is a sorting algorithm originally proposed by Iranian computer scientist Hamid Sarbazi-Azad.\
+Speed: O(n²)\
 n is number of elements in the array
 
 ### [Stooge Sort](https://en.wikipedia.org/wiki/Stooge_sort)
