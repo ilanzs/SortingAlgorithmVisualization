@@ -58,7 +58,14 @@ Speed: Worst:  O(n²)
 n is number of elements in the array.
 
 ### [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
+
 Selection Sort is an in place comparison sorting algorithms.
+Speed: O(n²)
+n is number of elements in the array
+
+### [Gnome Sort](https://en.wikipedia.org/wiki/Gnome_sort)
+
+Gnome Sort (dubbed stupid sort) is a sorting algorithm originally proposed by Iranian computer scientist Hamid Sarbazi-Azad.
 Speed: O(n²)
 n is number of elements in the array
 
